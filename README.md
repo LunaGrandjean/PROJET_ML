@@ -5,8 +5,8 @@ Le projet vise à explorer les données des compétitions d'apnée, effectuer un
 
 ### Fichiers
 data/:
-• raw/: Contient le fichier CSV original et éventuellement d'autres données brutes.
-• processed/: Données transformées ou nettoyées prêtes pour l'analyse.
+* raw/: Contient le fichier CSV original et éventuellement d'autres données brutes.
+* processed/: Données transformées ou nettoyées prêtes pour l'analyse.
 
 notebooks/:
 • exploration.ipynb: Notebook Jupyter pour l'exploration des données, y compris la visualisation.
