@@ -1,7 +1,9 @@
 ## Projet Machine Learning - Apnée
 
+
 ### Introduction
 Le projet vise à explorer les données des compétitions d'apnée, effectuer une analyse exploratoire (EDA), réaliser du clustering pour comprendre les raisons d'obtention de cartons rouges, et enfin, prédire les résultats des plongées.
+
 
 ### Fichiers
 data/:
@@ -26,3 +28,10 @@ tests/:
 Scripts de tests pour valider les fonctions dans 'src/*
 
 docs/: Documentation supplémentaire.
+
+
+###Data cleaning
+On a pris des décisions après analyse de la quantité de données manquantes et leurs source (détails dans le notebook *preprocessing*):
+*transformer comme demandé les données qui étaient sous formes de str en int pour faciliter l'analyse.
+*transformer les données manquantes sous forme de () ou autre en Nan ou null.
+*supprimer toutes les lignes avec des données manquantes car elles représentaient une partie négligeable du dataset.
