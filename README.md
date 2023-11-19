@@ -32,7 +32,7 @@ docs/: Documentation supplémentaire.
 
 ### Data cleaning
 On a pris des décisions après analyse de la quantité de données manquantes et leurs source (détails dans le notebook *preprocessing*):
-*transformer comme demandé les données qui étaient sous formes de str en int pour faciliter l'analyse.
-*transformer les données manquantes sous forme de () ou autre en Nan ou null.
-*supprimer toutes les lignes avec des données manquantes car elles représentaient une partie négligeable du dataset.
-*ajouter les colonnes Year et Month pour pouvoir faire des visualisations en fonction de ces données spécifiquement.
+* Transformer comme demandé les données qui étaient sous formes de str en int pour faciliter l'analyse.
+* Transformer les données manquantes sous forme de () ou autre en Nan ou null.
+* Supprimer toutes les lignes avec des données manquantes car elles représentaient une partie négligeable du dataset.
+* Ajouter les colonnes Year et Month pour pouvoir faire des visualisations en fonction de ces données spécifiquement.
