@@ -17,7 +17,8 @@ notebooks/:
 src/ :
 * data_preprocessing.py: Script pour le nettoyage et la préparation des données.
 * data_analysis.py: Script pour l'analyse des données.
-* model.py: Script pour la construction et l'entraînement du modèle ML. utils.py: Fonctions utilitaires communes.
+* model.py: Script pour la construction et l'entraînement du modèle ML.
+* utils.py: Fonctions utilitaires communes.
 
 models/:
 Dossiers pour les modèles sauvegardés, par exemple après l'entraînement.
