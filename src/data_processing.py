@@ -1,4 +1,24 @@
 import pandas as pd
+import numpy as np
+
+def prepare_data_for_visualization(df):
+    """Prepare the DataFrame for visualization by adding 'Year' column, converting 'Card' to numerical values,
+    and ensuring 'Gender' and 'Discipline' are in the correct format.
+
+    Args:
+        df (DataFrame): The DataFrame to be prepared.
+
+    Returns:
+        DataFrame: The DataFrame ready for visualization.
+    """
+    # Convert 'Day' to datetime and extract the year
+    df['Year'] = pd.to_datetime(df['Day']).dt.year
+
+    # Convert 'Card' to numerical values (assuming 'WHITE' = 0, 'YELLOW' = 1, 'RED' = 2)
+    card_to_int = {'WHITE': 0, 'YELLOW': 1, 'RED': 2}
+    df['Card'] = df['Card'].map(card_to_int)
+
+    return df
 
 
 def clean_and_transform_data(df):
@@ -9,7 +29,7 @@ def clean_and_transform_data(df):
     - Removes unnecessary columns ('Line' and 'Official Top').
     - Converts 'Gender' to numerical values (M=1, F=0).
     - Converts 'Discipline' to numerical values based on unique disciplines present in the data {'FIM': 0, 'CNF': 1, 'CWT': 2, 'CWTB': 3}.
-    - Adds a 'Month' column extracted from the 'Day' column.
+    - Adds a 'Month' and 'Year' column extracted from the 'Day' column.
     - Calculates the cumulative count of dives per diver as 'Experience Dive'.
     - Calculates the cumulative count of dives per diver per discipline as 'Experience Discipline'.
 
@@ -32,7 +52,7 @@ def clean_and_transform_data(df):
     discipline_to_int = {disc: idx for idx, disc in enumerate(disciplines)}
     df['Discipline'] = df['Discipline'].map(discipline_to_int)
 
-    # Add 'Month' column extracted from 'Day'
+    # Add 'Month' and 'Year' column extracted from 'Day'
     df['Month'] = pd.to_datetime(df['Day']).dt.month
 
     # Calculate general diving experience
@@ -67,7 +87,29 @@ def clean_data(df):
 
     return df_cleaned
 
-def save_cleaned_data(df, file_path='your_cleaned_file.csv'):
+def to_int(val):
+    '''
+    - replaces the m from the RP column by nothing to make it an int
+
+    Args:
+    val (str): The string value from the DataFrame column that needs to be converted.
+               This string is expected to end with an 'm' that needs to be removed.
+               It might also contain other non-numeric text or whitespace.
+    
+    Returns:
+    int or np.nan: The converted integer if conversion is possible, otherwise NaN
+                   for entries that cannot be converted to integers.
+    '''
+    try:
+        # Remove 'm' and any trailing whitespace, then convert to int
+        return int(val.replace('m', '').strip())
+    except ValueError:
+        # If conversion fails, return NaN
+        return np.nan
+
+
+
+def save_cleaned_data(df, file_path='../data/processed.csv'):
     """Save the cleaned DataFrame to a CSV file.
 
     Args:
